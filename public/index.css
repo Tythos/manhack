@@ -1,0 +1,41 @@
+body {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 10% 80% 10%;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+}
+
+.Header {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 1;
+}
+
+.Header h1 {
+    margin: 0;
+}
+
+.Header h2 {
+    margin: 0;
+}
+
+.Header div {
+    margin: 0;
+    font-style: italic;
+}
+
+.Nav {
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+}
+
+.Body {
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+}
+
+.Footer {
+    grid-column: 1 / span 2;
+    grid-row: 3 / span 1;
+}
