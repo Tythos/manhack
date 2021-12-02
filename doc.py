@@ -4,21 +4,21 @@
 import os
 import flask
 from gevent import pywsgi
-from manhack import server
+from manhack import api
 
 MOD_PATH, _ = os.path.split(os.path.abspath(__file__))
 _, MOD_NAME = os.path.split(MOD_PATH)
-API_MODULE = server
+API_MODULE = api
 API_APPLICATION = API_MODULE.APP
 APP = flask.Flask(MOD_NAME)
 
-@APP.route("/api/v1/")
+@APP.route("/doc")
 def index():
     """Returns static file entry point
     """
     return flask.send_file(MOD_PATH + "/public/index.html")
 
-@APP.route("/api/v1/meta")
+@APP.route("/doc/meta")
 def meta():
     """Returns metadata for API service (title, version, description) that
        could probably be parsed/matched from package data, etc. We could also
@@ -30,7 +30,7 @@ def meta():
         "version": API_MODULE.__version__ if hasattr(API_MODULE, "__version__") else "0x%x" % API_MODULE.__hash__()
     }
 
-@APP.route("/api/v1/endpoints")
+@APP.route("/doc/endpoints")
 def endpoints():
     """
     """
@@ -43,21 +43,22 @@ def endpoints():
         })
     return response
 
-@APP.route("/api/v1/endpoint/<string:handler>")
+@APP.route("/doc/endpoint/<string:handler>")
 def endpoint(handler:str):
     """
     """
     hf = API_APPLICATION.view_functions[handler]
     types = {}
+    hash = hf.__hash__()
     for k, v in hf.__annotations__.items():
         types[k] = v.__name__
     return {
         "types": types,
         "docstring": hf.__doc__,
-        "hash": "0x%x" % hf.__hash__()
+        "hash": "0x%x" % hash if 0 <= hash else "-0x%x" % -hash
     }
 
-@APP.route("/api/v1/public/<path:path>")
+@APP.route("/doc/public/<path:path>")
 def public(path):
     """
     """

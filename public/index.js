@@ -82,10 +82,10 @@ function onEndpointsLoaded(endpoints) {
 }
 
 function onEndpointLoaded(endpoint) {
-    let body = q(".Body");
+    let listing = q(".Listing");
     let details = Object.assign(endpoint, state["endpoints"][state["endpoint_ndx"]]);
-    body.innerHTML = "";
-    body.appendChild(t(details));
+    listing.innerHTML = "";
+    listing.appendChild(t(details));
     console.log(details);
 }
 
@@ -96,12 +96,24 @@ function onEndpointClick(event) {
     let ndx = routes.indexOf(route);
     let handler = state["endpoints"][ndx]["handler"];
     state["endpoint_ndx"] = ndx;
-    fetch(`/api/v1/endpoint/${handler}`).then(response => response.json()).then(onEndpointLoaded);
+    fetch(`/doc/endpoint/${handler}`).then(response => response.json()).then(onEndpointLoaded);
+    let lii = li.parentElement.querySelectorAll("li");
+    Array.from(lii).forEach(function(li, i) {
+        if (i == ndx) {
+            if (!li.classList.contains("Current")) {
+                li.classList.add("Current");
+            }
+        } else {
+            if (li.classList.contains("Current")) {
+                li.classList.remove("Current");
+            }
+        }
+    });
 }
 
 function onWindowLoad(event) {
-    fetch("/api/v1/meta").then(response => response.json()).then(onMetaLoaded);
-    fetch("/api/v1/endpoints").then(response => response.json()).then(onEndpointsLoaded);
+    fetch("/doc/meta").then(response => response.json()).then(onMetaLoaded);
+    fetch("/doc/endpoints").then(response => response.json()).then(onEndpointsLoaded);
 }
 
 window.addEventListener("load", onWindowLoad);

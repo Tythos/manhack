@@ -1,15 +1,19 @@
 body {
     display: grid;
     grid-template-columns: 20% 80%;
-    grid-template-rows: 10% 80% 10%;
+    grid-template-rows: 128px auto 64px;
     height: 100vh;
     width: 100vw;
     margin: 0;
 }
 
 .Header {
-    grid-column: 1 / span 2;
-    grid-row: 1 / span 1;
+	grid-column: 1 / span 2;
+	grid-row: 1 / span 1;
+	background-color: #111;
+	color: #eee;
+	font-family: sans-serif;
+	padding: 14px;
 }
 
 .Header h1 {
@@ -26,16 +30,52 @@ body {
 }
 
 .Nav {
-    grid-column: 1 / span 1;
-    grid-row: 2 / span 1;
+	grid-column: 1 / span 1;
+	grid-row: 2 / span 1;
+	background-color: #333;
+	color: #ccc;
+}
+
+.Nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.Nav li {
+	font-family: monospace;
+	padding: 16px 8px;
+	background: #555;
+	opacity: 0.5;
+	cursor: pointer;
+	border: 1px solid #777;
+}
+
+.Nav li.Current {
+    opacity: 1.0;
+}
+
+.Nav li:hover {
+    opacity: 1.0;
 }
 
 .Body {
     grid-column: 2 / span 1;
     grid-row: 2 / span 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 70% 30%;
+}
+
+.Listing {
+    grid-column: 1 / span 2
 }
 
 .Footer {
-    grid-column: 1 / span 2;
-    grid-row: 3 / span 1;
+	grid-column: 1 / span 2;
+	grid-row: 3 / span 1;
+	background-color: #111;
+	color: #eee;
+	font-family: sans-serif;
+	padding: 22px;
 }
