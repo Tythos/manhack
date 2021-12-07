@@ -4,6 +4,7 @@
 
 import os
 import flask
+from flask import views
 from gevent import pywsgi
 
 MOD_PATH, _ = os.path.split(os.path.abspath(__file__))
@@ -56,6 +57,29 @@ def entity(entity_id:int):
 @APP.route("/square/<number>")
 def square(number:float):
     return "%f" % number**2
+
+class UserView(views.MethodView):
+    """This is the UserView request model
+    """
+
+    def get(self, user_id:int):
+        """GET request handler for UserView
+        """
+        return {
+            "user_id": user_id,
+            "method": "GET"
+        }
+
+    def post(self, user_id:int):
+        """POST request handler for UserView
+        """
+        return {
+            "user_id": user_id,
+            "method": "POST",
+            "body": flask.request.json
+        }
+
+APP.add_url_rule("/users/<int:user_id>", view_func=UserView.as_view("user_api"))
 
 def main():
     """

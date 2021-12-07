@@ -65,10 +65,23 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 70% 30%;
+	padding: 24px;
 }
 
 .Listing {
     grid-column: 1 / span 2
+}
+
+.Listing h3 {
+	font-family: monospace;
+}
+
+.Listing h4 {
+	font-weight: normal;
+	font-family: sans-serif;
+	font-size: 10pt;
+	font-style: italic;
+	opacity: 0.5;
 }
 
 .Footer {
@@ -78,4 +91,187 @@ body {
 	color: #eee;
 	font-family: sans-serif;
 	padding: 22px;
+	text-align: center;
+	font-size: 10pt;
+}
+
+.MethodWrapper {
+	display: grid;
+	grid-template-columns: 180px auto;
+	grid-template-rows: 32px auto;
+	border-radius: 4px;
+	padding: 4px;
+	margin: 8px;
+	font-family: sans-serif;
+	border-width: 1px;
+	border-style: solid;
+	cursor: pointer;
+}
+
+.MethodButton {
+	color: #fff;
+	font-weight: bold;
+	border-radius: 4px;
+	width: 128px;
+	text-align: center;
+	text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+	align-self: stretch;
+	padding-top: 8px
+}
+
+.MethodRoute {
+	font-family: monospace;
+	color: #000;
+	font-weight: bold;
+	align-self: center;
+	font-size: 10pt;
+}
+
+.MethodDocstring {
+	grid-column: 1 / span 2;
+	display: none;
+	border-radius: 4px;
+	background-color: #fff;
+	border-style: solid;
+	border-width: 1px;
+	margin: 8px 0 4px 0;
+	padding: 8px;
+	font-size: 10pt;
+}
+
+.MethodExpanded .MethodDocstring {
+	display: block;
+}
+
+/* --- DELETE method --- */
+
+.MethodDELETE {
+	background-color: rgba(249,62,62,.1);
+	border-color: #f93e3e;
+}
+
+.MethodDELETE .MethodButton {
+	background-color: #f93e3e;
+}
+
+.MethodDELETE .MethodDocstring {
+	border-color: #f93e3e;
+}
+
+/* --- GET method --- */
+
+.MethodGET {
+	background-color: rgba(97,175,254,.1);
+	border-color: #61affe;
+}
+
+.MethodGET .MethodButton {
+	background-color: #61affe;
+}
+
+.MethodGET .MethodDocstring {
+	border-color: #61affe;
+}
+
+/* --- HEAD method --- */
+
+.MethodHEAD {
+	background-color: rgba(144,18,254,.1);
+	border-color: #9012fe;
+}
+
+.MethodHEAD .MethodButton {
+	background-color: #9012fe;
+}
+
+.MethodHEAD .MethodDocstring {
+	border-color: #9012fe;
+}
+
+/* --- OPTIONS method --- */
+
+.MethodOPTIONS {
+	background-color: rgba(13,90,167,.1);
+	border-color: #0d5aa7;
+}
+
+.MethodOPTIONS .MethodButton {
+	background-color: #0d5aa7;
+}
+
+.MethodOPTIONS .MethodDocstring {
+	border-color: #0d5aa7;
+}
+
+/* --- PATCH method --- */
+
+.MethodPATCH {
+	background-color: rgba(80,227,194,.1);
+	border-color: #50e3c2;
+}
+
+.MethodPATCH .MethodButton {
+	background-color: #50e3c2;
+}
+
+.MethodPATCH .MethodDocstring {
+	border-color: #50e3c2;
+}
+
+/* --- POST method --- */
+
+.MethodPOST {
+	background-color: rgba(73,204,144,.1);
+	border-color: #49cc90;
+}
+
+.MethodPOST .MethodButton {
+	background-color: #49cc90;
+}
+
+.MethodPOST .MethodDocstring {
+	border-color: #49cc90;
+}
+
+/* --- PUT method --- */
+
+.MethodPUT {
+	background-color: rgba(252,161,48,.1);
+	border-color: #fca130;
+}
+
+.MethodPUT .MethodButton {
+	background-color: #fca130;
+}
+
+.MethodPUT .MethodDocstring {
+	border-color: #fca130;
+}
+
+/* --- Request/Response console --- */
+
+.Request {
+	background-color: #000;
+	color: #fff;
+	font-family: monospace;
+}
+
+.Request .Col1 {
+	opacity: 0.5;
+	text-align: right;
+	padding-right: 8px;
+}
+
+.Request .Col2 {
+	padding-left: 8px;
+}
+
+.RequestArguments input, .RequestBody textarea {
+	background-color: #222;
+	color: #fff;
+	border: 1px solid #777;
+}
+
+.RequestSubmit button {
+	width: 100%;
 }
